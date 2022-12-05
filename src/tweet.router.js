@@ -22,7 +22,8 @@ tweetRouter.get("/", (req, res) => {
 
 tweetRouter.get("/:id", (req, res) => {
   const tweet = tweets.find((tweet) => tweet.id === req.params.id);
-  res.status(200).json(tweets);
+
+  res.status(200).json(tweet);
 });
 
 tweetRouter.post("/", (req, res) => {
