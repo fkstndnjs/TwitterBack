@@ -6,7 +6,7 @@ let tweets = [
   {
     id: "1",
     createdAt: "2022-12-01",
-    name: "SeokHyun YU",
+    name: "SeokHyun Yu",
     username: "ysh",
     text: "Hello",
   },
