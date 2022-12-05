@@ -43,7 +43,7 @@ tweetRouter.put("/:id", (req, res) => {
 tweetRouter.delete("/:id", (req, res) => {
   tweets = tweets.filter((tweet) => tweet.id !== req.params.id);
 
-  res.status(204);
+  res.sendStatus(204);
 });
 
 export default tweetRouter;
