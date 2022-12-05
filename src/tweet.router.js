@@ -10,6 +10,7 @@ const tweets = [
     username: "ysh",
   },
 ];
+
 tweetRouter.get("/", (req, res) => {
   res.status(200).json(tweets);
 });
