@@ -2,12 +2,13 @@ import express from "express";
 
 const tweetRouter = express.Router();
 
-const tweets = [
+let tweets = [
   {
     id: "1",
     createdAt: "2022-12-05",
     name: "SeokHyun YU",
     username: "ysh",
+    text: "Hello",
   },
 ];
 
@@ -16,15 +17,24 @@ tweetRouter.get("/", (req, res) => {
 });
 
 tweetRouter.post("/", (req, res) => {
-  res.send("POST");
+  tweets = [req.body, ...tweets];
+
+  res.status(201).json(tweets);
 });
 
 tweetRouter.put("/:id", (req, res) => {
-  res.send("PUT");
+  const { text } = req.body;
+  const tweet = tweets.find((tweet) => tweet.id === req.params.id);
+
+  tweet.text = text;
+
+  res.status(200).json(tweet);
 });
 
 tweetRouter.delete("/:id", (req, res) => {
-  res.send("DELETE");
+  tweets = tweets.filter((tweet) => tweet.id !== req.params.id);
+
+  res.status(204);
 });
 
 export default tweetRouter;
