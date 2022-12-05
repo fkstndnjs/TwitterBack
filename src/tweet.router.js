@@ -35,7 +35,6 @@ tweetRouter.post("/", (req, res) => {
 tweetRouter.put("/:id", (req, res) => {
   const { text } = req.body;
   const tweet = tweets.find((tweet) => tweet.id === req.params.id);
-
   tweet.text = text;
 
   res.status(200).json(tweet);
