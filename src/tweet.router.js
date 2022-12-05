@@ -21,9 +21,14 @@ tweetRouter.get("/", (req, res) => {
 });
 
 tweetRouter.get("/:id", (req, res) => {
-  const tweet = tweets.find((tweet) => tweet.id === req.params.id);
+  const { id } = req.params;
+  const tweet = tweets.find((tweet) => tweet.id === id);
 
-  res.status(200).json(tweet);
+  if (tweet) {
+    res.status(200).json(tweet);
+  } else {
+    res.status(404).json({ message: `id ${id} NOT FOUND` });
+  }
 });
 
 tweetRouter.post("/", (req, res) => {
@@ -33,17 +38,29 @@ tweetRouter.post("/", (req, res) => {
 });
 
 tweetRouter.put("/:id", (req, res) => {
+  const { id } = req.params;
   const { text } = req.body;
-  const tweet = tweets.find((tweet) => tweet.id === req.params.id);
-  tweet.text = text;
+  const tweet = tweets.find((tweet) => tweet.id === id);
 
-  res.status(200).json(tweet);
+  if (tweet) {
+    tweet.text = text;
+
+    res.status(200).json(tweet);
+  } else {
+    res.status(404).json({ message: `id ${id} NOT FOUND` });
+  }
 });
 
 tweetRouter.delete("/:id", (req, res) => {
-  tweets = tweets.filter((tweet) => tweet.id !== req.params.id);
+  const { id } = req.params;
+  const prevLength = tweets.length;
+  tweets = tweets.filter((tweet) => tweet.id !== id);
 
-  res.sendStatus(204);
+  if (prevLength === tweets.length) {
+    res.sendStatus(204);
+  } else {
+    res.status(404).json({ message: `id ${id} NOT FOUND` });
+  }
 });
 
 export default tweetRouter;
