@@ -12,6 +12,7 @@ let tweets = [
   },
 ];
 
+// 전체 조회
 tweetRouter.get("/", (req, res) => {
   const tempTweets = req.query.username
     ? tweets.filter((tweet) => tweet.username === req.query.username)
@@ -20,6 +21,7 @@ tweetRouter.get("/", (req, res) => {
   res.status(200).json(tempTweets);
 });
 
+// 상세 조회
 tweetRouter.get("/:id", (req, res) => {
   const { id } = req.params;
   const tweet = tweets.find((tweet) => tweet.id === id);
@@ -31,12 +33,14 @@ tweetRouter.get("/:id", (req, res) => {
   }
 });
 
+// 트윗 생성
 tweetRouter.post("/", (req, res) => {
   tweets = [req.body, ...tweets];
 
   res.status(201).json(tweets);
 });
 
+// 트윗 수정
 tweetRouter.put("/:id", (req, res) => {
   const { id } = req.params;
   const { text } = req.body;
@@ -51,6 +55,7 @@ tweetRouter.put("/:id", (req, res) => {
   }
 });
 
+// 트윗 삭제
 tweetRouter.delete("/:id", (req, res) => {
   const { id } = req.params;
   const prevLength = tweets.length;
