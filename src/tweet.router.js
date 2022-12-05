@@ -27,7 +27,7 @@ tweetRouter.get("/:id", (req, res) => {
   if (tweet) {
     res.status(200).json(tweet);
   } else {
-    res.status(404).json({ message: `id ${id} NOT FOUND` });
+    res.status(404).json({ status: 404, message: `id ${id} NOT FOUND` });
   }
 });
 
@@ -47,7 +47,7 @@ tweetRouter.put("/:id", (req, res) => {
 
     res.status(200).json(tweet);
   } else {
-    res.status(404).json({ message: `id ${id} NOT FOUND` });
+    res.status(404).json({ status: 404, message: `id ${id} NOT FOUND` });
   }
 });
 
@@ -56,10 +56,10 @@ tweetRouter.delete("/:id", (req, res) => {
   const prevLength = tweets.length;
   tweets = tweets.filter((tweet) => tweet.id !== id);
 
-  if (prevLength === tweets.length) {
+  if (prevLength !== tweets.length) {
     res.sendStatus(204);
   } else {
-    res.status(404).json({ message: `id ${id} NOT FOUND` });
+    res.status(404).json({ status: 404, message: `id ${id} NOT FOUND` });
   }
 });
 
