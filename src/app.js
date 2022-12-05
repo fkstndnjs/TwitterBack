@@ -5,10 +5,7 @@ import cors from "cors";
 
 const app = express();
 
-express.json();
-
-morgan();
-
-helmet();
-
-cors;
+app.use(express.json());
+app.use(morgan("dev"));
+app.use(helmet());
+app.use(cors());
