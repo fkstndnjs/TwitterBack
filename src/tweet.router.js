@@ -5,7 +5,7 @@ const tweetRouter = express.Router();
 let tweets = [
   {
     id: "1",
-    createdAt: "2022-12-05",
+    createdAt: "2022-12-01",
     name: "SeokHyun YU",
     username: "ysh",
     text: "Hello",
@@ -13,6 +13,15 @@ let tweets = [
 ];
 
 tweetRouter.get("/", (req, res) => {
+  const tempTweets = req.query.username
+    ? tweets.filter((tweet) => tweet.username === req.query.username)
+    : tweets;
+
+  res.status(200).json(tempTweets);
+});
+
+tweetRouter.get("/:id", (req, res) => {
+  const tweet = tweets.find((tweet) => tweet.id === req.params.id);
   res.status(200).json(tweets);
 });
 
