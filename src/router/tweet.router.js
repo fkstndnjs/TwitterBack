@@ -5,8 +5,9 @@ const tweetRouter = express.Router();
 
 // 전체 조회
 tweetRouter.get("/", (req, res) => {
-    const tempTweets = req.query.username
-        ? tweetRepository.getAllTweetsByUsername(req.query.username)
+    const { username } = req.query;
+    const tempTweets = username
+        ? tweetRepository.getAllTweetsByUsername(username)
         : tweetRepository.getAllTweets();
 
     res.status(200).json(tempTweets);
