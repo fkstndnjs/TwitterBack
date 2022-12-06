@@ -11,3 +11,7 @@ let tweets = [
 export const getAllTweets = () => {
     return tweets;
 };
+
+export const getAllTweetsByUsername = (username) => {
+    return tweets.filter((tweet) => tweet.username === username);
+};
