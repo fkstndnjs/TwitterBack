@@ -15,7 +15,7 @@ tweetRouter.get("/", (req, res) => {
 // 상세 조회
 tweetRouter.get("/:id", (req, res) => {
     const { id } = req.params;
-    const tweet = tweets.find((tweet) => tweet.id === id);
+    const tweet = tweetRepository.getTweetById(id);
 
     if (tweet) {
         res.status(200).json(tweet);
