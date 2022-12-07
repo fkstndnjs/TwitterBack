@@ -4,6 +4,8 @@ import { body } from "express-validator";
 import { validate } from "../middleware/validator.js";
 
 const tweetController = express.Router();
+
+// text가 5글자 이상인지 검사하는 validator
 const textValidator = [
   body("text")
     .trim()
