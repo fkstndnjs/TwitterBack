@@ -19,9 +19,11 @@ tweetController.get("/", tweetService.getTweets);
 tweetController.get("/:id", tweetService.getTweet);
 
 // 트윗 생성
+// textValidator 미들웨어 추가
 tweetController.post("/", textValidator, tweetService.createTweet);
 
 // 트윗 수정
+// textValidator 미들웨어 추가
 tweetController.put("/:id", textValidator, tweetService.updateTweet);
 
 // 트윗 삭제
