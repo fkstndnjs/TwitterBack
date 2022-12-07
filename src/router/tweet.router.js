@@ -7,8 +7,8 @@ const tweetRouter = express.Router();
 tweetRouter.get("/", (req, res) => {
     const { username } = req.query;
     const tempTweets = username
-        ? tweetRepository.getAllTweetsByUsername(username)
-        : tweetRepository.getAllTweets();
+        ? tweetRepository.getAllByUsername(username)
+        : tweetRepository.getAll();
 
     res.status(200).json(tempTweets);
 });
@@ -16,7 +16,7 @@ tweetRouter.get("/", (req, res) => {
 // 상세 조회
 tweetRouter.get("/:id", (req, res) => {
     const { id } = req.params;
-    const tweet = tweetRepository.getTweetById(id);
+    const tweet = tweetRepository.getById(id);
 
     if (tweet) {
         res.status(200).json(tweet);
@@ -27,7 +27,7 @@ tweetRouter.get("/:id", (req, res) => {
 
 // 트윗 생성
 tweetRouter.post("/", (req, res) => {
-    tweetRepository.createTweet(req.body);
+    tweetRepository.create(req.body);
 
     res.sendStatus(201);
 });
@@ -36,7 +36,7 @@ tweetRouter.post("/", (req, res) => {
 tweetRouter.put("/:id", (req, res) => {
     const { id } = req.params;
     const { text } = req.body;
-    const tweet = tweetRepository.updateTweet(id, text);
+    const tweet = tweetRepository.update(id, text);
 
     if (tweet) {
         tweet.text = text;
@@ -50,7 +50,7 @@ tweetRouter.put("/:id", (req, res) => {
 // 트윗 삭제
 tweetRouter.delete("/:id", (req, res) => {
     const { id } = req.params;
-    const deleteResult = tweetRepository.deleteTweet(id);
+    const deleteResult = tweetRepository.delete(id);
 
     if (deleteResult) {
         res.sendStatus(204);

@@ -8,11 +8,11 @@ let tweets = [
     },
 ];
 
-export const getAllTweets = () => {
+export const getAll = () => {
     return tweets;
 };
 
-export const getAllTweetsByUsername = (username) => {
+export const getAllByUsername = (username) => {
     return tweets.filter((tweet) => tweet.username === username);
 };
 
