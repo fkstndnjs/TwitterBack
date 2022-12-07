@@ -1,7 +1,4 @@
-import express from "express";
 import * as tweetRepository from "../data/tweet.data.js";
-
-const tweetRouter = express.Router();
 
 // 전체 조회
 export const getTweets = (req, res) => {
@@ -33,7 +30,7 @@ export const createTweet = (req, res) => {
 };
 
 // 트윗 수정
-(req, res) => {
+export const updateTweet = (req, res) => {
     const { id } = req.params;
     const { text } = req.body;
     const tweet = tweetRepository.updateTweet(id, text);
@@ -45,10 +42,10 @@ export const createTweet = (req, res) => {
     } else {
         res.status(404).json({ status: 404, message: `id ${id} NOT FOUND` });
     }
-});
+};
 
 // 트윗 삭제
-tweetRouter.delete("/:id", (req, res) => {
+export const deleteTweet = (req, res) => {
     const { id } = req.params;
     const deleteResult = tweetRepository.deleteTweet(id);
 
@@ -57,6 +54,4 @@ tweetRouter.delete("/:id", (req, res) => {
     } else {
         res.status(404).json({ status: 404, message: `id ${id} NOT FOUND` });
     }
-});
-
-export default tweetRouter;
+};
