@@ -1,21 +1,21 @@
 import express from "express";
-import * as tweetController from "./tweet.service.js";
+import * as tweetService from "./tweet.service.js";
 
-const tweetRouter = express.Router();
+const tweetController = express.Router();
 
 // 전체 조회
-tweetRouter.get("/", tweetController.getTweets);
+tweetController.get("/", tweetService.getTweets);
 
 // 상세 조회
-tweetRouter.get("/:id", tweetController.getTweet);
+tweetController.get("/:id", tweetService.getTweet);
 
 // 트윗 생성
-tweetRouter.post("/", tweetController.createTweet);
+tweetController.post("/", tweetService.createTweet);
 
 // 트윗 수정
-tweetRouter.put("/:id", tweetController.updateTweet);
+tweetController.put("/:id", tweetService.updateTweet);
 
 // 트윗 삭제
-tweetRouter.delete("/:id", tweetController.deleteTweet);
+tweetController.delete("/:id", tweetService.deleteTweet);
 
-export default tweetRouter;
+export default tweetController;
