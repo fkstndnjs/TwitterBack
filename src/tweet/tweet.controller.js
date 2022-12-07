@@ -17,7 +17,7 @@ tweetController.post(
   body("text")
     .trim()
     .isLength({ min: 5 })
-    .withMessage("최소 5 글자 이상 입력해주세요."),
+    .withMessage("text를 최소 5 글자 이상 입력해주세요."),
   validate,
   tweetService.createTweet
 );
