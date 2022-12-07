@@ -8,19 +8,19 @@ let tweets = [
     },
 ];
 
-export const getAllTweets = () => {
+export const getAllTweets = async () => {
     return tweets;
 };
 
-export const getAllTweetsByUsername = (username) => {
+export const getAllTweetsByUsername = async (username) => {
     return tweets.filter((tweet) => tweet.username === username);
 };
 
-export const getTweetById = (id) => {
+export const getTweetById = async (id) => {
     return tweets.find((tweet) => `${tweet.id}` === id);
 };
 
-export const createTweet = ({ name, username, text }) => {
+export const createTweet = async ({ name, username, text }) => {
     const newTweet = {
         id: (tweets[0]?.id || 0) + 1,
         createdAt: Date.now().toLocaleString(),
@@ -34,7 +34,7 @@ export const createTweet = ({ name, username, text }) => {
     return tweets;
 };
 
-export const updateTweet = (id, text) => {
+export const updateTweet = async (id, text) => {
     const tweet = tweets.find((tweet) => `${tweet.id}` === id);
 
     if (tweet) {
@@ -44,7 +44,7 @@ export const updateTweet = (id, text) => {
     return tweet;
 };
 
-export const deleteTweet = (id) => {
+export const deleteTweet = async (id) => {
     const prevLength = tweets.length;
 
     tweets = tweets.filter((tweet) => `${tweet.id}` !== id);
