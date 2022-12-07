@@ -2,7 +2,7 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
-import tweetRouter from "./tweet/tweet.controller.js";
+import tweetController from "./tweet/tweet.controller.js";
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
 
-app.use("/tweet", tweetRouter);
+app.use("/tweet", tweetController);
 
 app.use((req, res, next) => {
     res.sendStatus(404);
