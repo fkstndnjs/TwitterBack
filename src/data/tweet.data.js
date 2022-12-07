@@ -33,3 +33,11 @@ export const createTweet = ({ name, username, text }) => {
 
     return tweets;
 };
+
+export const updateTweet = ({text})=>{
+    const tweet = tweets.find((tweet) => tweet.id === id);
+
+    tweet?.text = text
+
+    return tweet;
+}
