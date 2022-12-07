@@ -50,7 +50,7 @@ tweetRouter.put("/:id", (req, res) => {
 // 트윗 삭제
 tweetRouter.delete("/:id", (req, res) => {
     const { id } = req.params;
-    const deleteResult = tweetRepository.delete(id);
+    const deleteResult = tweetRepository.deleteTweet(id);
 
     if (deleteResult) {
         res.sendStatus(204);
