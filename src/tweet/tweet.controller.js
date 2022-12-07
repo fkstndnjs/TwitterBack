@@ -14,7 +14,6 @@ tweetController.get("/:id", tweetService.getTweet);
 // 트윗 생성
 tweetController.post(
   "/",
-
   body("text")
     .trim()
     .isLength({ min: 3 })
