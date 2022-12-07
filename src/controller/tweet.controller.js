@@ -1,7 +1,7 @@
 import * as tweetRepository from "../data/tweet.data.js";
 
 // 전체 조회
-export const getTweets = (req, res) => {
+export const getTweets = async (req, res) => {
     const { username } = req.query;
     const tempTweets = username
         ? tweetRepository.getAllTweetsByUsername(username)
@@ -11,7 +11,7 @@ export const getTweets = (req, res) => {
 };
 
 // 상세 조회
-export const getTweet = (req, res) => {
+export const getTweet = async (req, res) => {
     const { id } = req.params;
     const tweet = tweetRepository.getTweetById(id);
 
@@ -23,14 +23,14 @@ export const getTweet = (req, res) => {
 };
 
 // 트윗 생성
-export const createTweet = (req, res) => {
+export const createTweet = async (req, res) => {
     tweetRepository.createTweet(req.body);
 
     res.sendStatus(201);
 };
 
 // 트윗 수정
-export const updateTweet = (req, res) => {
+export const updateTweet = async (req, res) => {
     const { id } = req.params;
     const { text } = req.body;
     const tweet = tweetRepository.updateTweet(id, text);
@@ -45,7 +45,7 @@ export const updateTweet = (req, res) => {
 };
 
 // 트윗 삭제
-export const deleteTweet = (req, res) => {
+export const deleteTweet = async (req, res) => {
     const { id } = req.params;
     const deleteResult = tweetRepository.deleteTweet(id);
 
