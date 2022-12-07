@@ -27,7 +27,7 @@ tweetRouter.get("/:id", (req, res) => {
 
 // 트윗 생성
 tweetRouter.post("/", (req, res) => {
-    tweetRepository.createTweet(req.body.tweet);
+    tweetRepository.createTweet(req.body);
 
     res.sendStatus(201);
 });
@@ -51,7 +51,6 @@ tweetRouter.put("/:id", (req, res) => {
 tweetRouter.delete("/:id", (req, res) => {
     const { id } = req.params;
     const prevLength = tweets.length;
-    tweets = tweets.filter((tweet) => tweet.id !== id);
 
     if (prevLength !== tweets.length) {
         res.sendStatus(204);

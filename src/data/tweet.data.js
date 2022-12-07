@@ -34,10 +34,16 @@ export const createTweet = ({ name, username, text }) => {
     return tweets;
 };
 
-export const updateTweet = ({text})=>{
+export const updateTweet = (id, text) => {
     const tweet = tweets.find((tweet) => tweet.id === id);
 
-    tweet?.text = text
+    if (tweet) {
+        tweet.text = text;
+    }
 
     return tweet;
-}
+};
+
+export const deleteTweet = (id) => {
+    tweets = tweets.filter((tweet) => tweet.id !== id);
+};
