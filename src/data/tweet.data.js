@@ -17,7 +17,7 @@ export const getAllTweetsByUsername = (username) => {
 };
 
 export const getTweetById = (id) => {
-    return tweets.find((tweet) => tweet.id === id);
+    return tweets.find((tweet) => tweet.id === `${id}`);
 };
 
 export const createTweet = ({ name, username, text }) => {
@@ -35,7 +35,7 @@ export const createTweet = ({ name, username, text }) => {
 };
 
 export const updateTweet = (id, text) => {
-    const tweet = tweets.find((tweet) => tweet.id === id);
+    const tweet = tweets.find((tweet) => tweet.id === `${id}`);
 
     if (tweet) {
         tweet.text = text;
@@ -47,7 +47,7 @@ export const updateTweet = (id, text) => {
 export const deleteTweet = (id) => {
     const prevLength = tweets.length;
 
-    tweets = tweets.filter((tweet) => tweet.id !== id);
+    tweets = tweets.filter((tweet) => tweet.id !== `${id}`);
 
     return prevLength !== tweets.length;
 };
