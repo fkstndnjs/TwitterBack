@@ -11,10 +11,10 @@ export const getTweets = (req, res) => {
         : tweetRepository.getAllTweets();
 
     res.status(200).json(tempTweets);
-}
+};
 
 // 상세 조회
-export const getTweet = ("/:id", (req, res) => {
+export const getTweet = (req, res) => {
     const { id } = req.params;
     const tweet = tweetRepository.getTweetById(id);
 
@@ -23,17 +23,17 @@ export const getTweet = ("/:id", (req, res) => {
     } else {
         res.status(404).json({ status: 404, message: `id ${id} NOT FOUND` });
     }
-}
+};
 
 // 트윗 생성
-tweetRouter.post("/", (req, res) => {
+export const createTweet = (req, res) => {
     tweetRepository.createTweet(req.body);
 
     res.sendStatus(201);
-});
+};
 
 // 트윗 수정
-tweetRouter.put("/:id", (req, res) => {
+(req, res) => {
     const { id } = req.params;
     const { text } = req.body;
     const tweet = tweetRepository.updateTweet(id, text);
