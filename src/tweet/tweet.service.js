@@ -1,4 +1,4 @@
-import * as tweetRepository from "../data/tweet.data.js";
+import * as tweetRepository from "./tweet.repository.js";
 
 // 전체 조회
 export const getTweets = async (req, res) => {
