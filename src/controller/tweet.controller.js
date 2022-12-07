@@ -4,8 +4,8 @@ import * as tweetRepository from "../data/tweet.data.js";
 export const getTweets = async (req, res) => {
     const { username } = req.query;
     const tempTweets = username
-        ? tweetRepository.getAllTweetsByUsername(username)
-        : tweetRepository.getAllTweets();
+        ? await tweetRepository.getAllTweetsByUsername(username)
+        : await tweetRepository.getAllTweets();
 
     res.status(200).json(tempTweets);
 };
@@ -13,7 +13,7 @@ export const getTweets = async (req, res) => {
 // 상세 조회
 export const getTweet = async (req, res) => {
     const { id } = req.params;
-    const tweet = tweetRepository.getTweetById(id);
+    const tweet = await tweetRepository.getTweetById(id);
 
     if (tweet) {
         res.status(200).json(tweet);
@@ -24,7 +24,7 @@ export const getTweet = async (req, res) => {
 
 // 트윗 생성
 export const createTweet = async (req, res) => {
-    tweetRepository.createTweet(req.body);
+    await tweetRepository.createTweet(req.body);
 
     res.sendStatus(201);
 };
@@ -33,7 +33,7 @@ export const createTweet = async (req, res) => {
 export const updateTweet = async (req, res) => {
     const { id } = req.params;
     const { text } = req.body;
-    const tweet = tweetRepository.updateTweet(id, text);
+    const tweet = await tweetRepository.updateTweet(id, text);
 
     if (tweet) {
         tweet.text = text;
@@ -47,7 +47,7 @@ export const updateTweet = async (req, res) => {
 // 트윗 삭제
 export const deleteTweet = async (req, res) => {
     const { id } = req.params;
-    const deleteResult = tweetRepository.deleteTweet(id);
+    const deleteResult = await tweetRepository.deleteTweet(id);
 
     if (deleteResult) {
         res.sendStatus(204);
