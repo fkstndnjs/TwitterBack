@@ -1,7 +1,7 @@
 let tweets = [
     {
         id: 1,
-        createdAt: Date.now().toLocaleString(),
+        createdAt: new Date().toLocaleString(),
         name: "SeokHyun Yu",
         username: "ysh",
         text: "Hello",
