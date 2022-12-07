@@ -23,7 +23,7 @@ export const getTweetById = (id) => {
 export const createTweet = ({ name, username, text }) => {
     const newTweet = {
         id: (tweets[0]?.id || 0) + 1,
-        createdAt: Date.now().toLocaleString(),
+        createdAt: new Date().toLocaleString(),
         name,
         username,
         text,
