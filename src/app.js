@@ -3,6 +3,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 import tweetController from "./tweet/tweet.controller.js";
+import authController from "./auth/auth.controller.js";
 
 const app = express();
 
