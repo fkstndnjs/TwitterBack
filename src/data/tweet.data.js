@@ -8,11 +8,11 @@ let tweets = [
     },
 ];
 
-export const getAll = () => {
+export const getAllTweets = () => {
     return tweets;
 };
 
-export const getAllByUsername = (username) => {
+export const getAllTweetsByUsername = (username) => {
     return tweets.filter((tweet) => tweet.username === username);
 };
 
@@ -23,7 +23,7 @@ export const getTweetById = (id) => {
 export const createTweet = ({ name, username, text }) => {
     const newTweet = {
         id: (tweets[0]?.id || 0) + 1,
-        createdAt: new Date().toLocaleString(),
+        createdAt: Date.now().toLocaleString(),
         name,
         username,
         text,
