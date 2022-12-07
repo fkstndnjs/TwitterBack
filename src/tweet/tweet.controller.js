@@ -1,6 +1,7 @@
 import express from "express";
 import * as tweetService from "./tweet.service.js";
 import { body } from "express-validator";
+import { validate } from "../middleware/validator.js";
 
 const tweetController = express.Router();
 
@@ -17,6 +18,7 @@ tweetController.post(
     .trim()
     .isLength({ min: 0 })
     .withMessage("최소 0글자 이상 입력해주세요."),
+  validate(),
   tweetService.createTweet
 );
 
