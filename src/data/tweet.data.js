@@ -45,5 +45,9 @@ export const updateTweet = (id, text) => {
 };
 
 export const deleteTweet = (id) => {
+    const prevLength = tweets.length;
+
     tweets = tweets.filter((tweet) => tweet.id !== id);
+
+    return prevLength !== tweets.length;
 };

@@ -50,9 +50,9 @@ tweetRouter.put("/:id", (req, res) => {
 // 트윗 삭제
 tweetRouter.delete("/:id", (req, res) => {
     const { id } = req.params;
-    const prevLength = tweets.length;
+    const deleteResult = tweetRepository.deleteTweet(id);
 
-    if (prevLength !== tweets.length) {
+    if (deleteResult) {
         res.sendStatus(204);
     } else {
         res.status(404).json({ status: 404, message: `id ${id} NOT FOUND` });
