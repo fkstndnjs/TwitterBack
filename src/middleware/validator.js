@@ -1,6 +1,7 @@
 import { validationResult } from "express-validator";
 
 export const validate = (req, res, next) => {
+  // "express-validator"에서 req에 넘겨준 validation 결과를 validationResult()로 가져옴
   const errors = validationResult(req);
 
   if (errors.isEmpty()) {
