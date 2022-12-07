@@ -14,11 +14,11 @@ app.use(cors());
 app.use("/tweet", tweetController);
 
 app.use((req, res, next) => {
-    res.sendStatus(404);
+  res.sendStatus(404);
 });
 
 app.use((err, req, res, next) => {
-    res.sendStatus(500);
+  res.sendStatus(500);
 });
 
 app.listen(8000);
