@@ -7,8 +7,8 @@ const tweetRouter = express.Router();
 tweetRouter.get("/", (req, res) => {
     const { username } = req.query;
     const tempTweets = username
-        ? tweetRepository.getAllByUsername(username)
-        : tweetRepository.getAll();
+        ? tweetRepository.getAllTweetsByUsername(username)
+        : tweetRepository.getAllTweets();
 
     res.status(200).json(tempTweets);
 });
@@ -16,7 +16,7 @@ tweetRouter.get("/", (req, res) => {
 // 상세 조회
 tweetRouter.get("/:id", (req, res) => {
     const { id } = req.params;
-    const tweet = tweetRepository.getById(id);
+    const tweet = tweetRepository.getTweetById(id);
 
     if (tweet) {
         res.status(200).json(tweet);
@@ -27,7 +27,7 @@ tweetRouter.get("/:id", (req, res) => {
 
 // 트윗 생성
 tweetRouter.post("/", (req, res) => {
-    tweetRepository.create(req.body);
+    tweetRepository.createTweet(req.body);
 
     res.sendStatus(201);
 });
@@ -36,7 +36,7 @@ tweetRouter.post("/", (req, res) => {
 tweetRouter.put("/:id", (req, res) => {
     const { id } = req.params;
     const { text } = req.body;
-    const tweet = tweetRepository.update(id, text);
+    const tweet = tweetRepository.updateTweet(id, text);
 
     if (tweet) {
         tweet.text = text;
