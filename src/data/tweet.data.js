@@ -1,7 +1,7 @@
 let tweets = [
     {
-        id: "1",
-        createdAt: "2022-12-01",
+        id: 1,
+        createdAt: Date.now().toLocaleString(),
         name: "SeokHyun Yu",
         username: "ysh",
         text: "Hello",
@@ -18,4 +18,18 @@ export const getAllTweetsByUsername = (username) => {
 
 export const getTweetById = (id) => {
     return tweets.find((tweet) => tweet.id === id);
+};
+
+export const createTweet = ({ name, username, text }) => {
+    const newTweet = {
+        id: tweets[0].id + 1,
+        createdAt: Date.now().toLocaleString(),
+        name,
+        username,
+        text,
+    };
+
+    tweets = [newTweet, ...tweets];
+
+    return tweets;
 };

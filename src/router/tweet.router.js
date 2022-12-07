@@ -27,9 +27,9 @@ tweetRouter.get("/:id", (req, res) => {
 
 // 트윗 생성
 tweetRouter.post("/", (req, res) => {
-    tweets = [req.body, ...tweets];
+    tweetRepository.createTweet(req.body.tweet);
 
-    res.status(201).json(tweets);
+    res.sendStatus(201);
 });
 
 // 트윗 수정
