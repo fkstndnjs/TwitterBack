@@ -1,3 +1,5 @@
+import * as userRepository from "../user/user.repository.js";
+
 let tweets = [
     {
         createdAt: new Date().toLocaleString(),
@@ -8,18 +10,28 @@ let tweets = [
 ];
 
 export const getAllTweets = async () => {
-    return tweets;
+    return Promise.all(
+        tweets.map(async (tweet) => {
+            const { username, name } = await userRepository.findById(
+                tweet.userId
+            );
+
+            return { ...tweet, username, name };
+        })
+    );
 };
 
 export const getAllTweetsByUsername = async (username) => {
-    return tweets.filter((tweet) => tweet.username === username);
+    return getAllTweets().then((tweets) =>
+        tweets.filter((tweet) => tweet.username === username)
+    );
 };
 
 export const getTweetById = async (id) => {
     return tweets.find((tweet) => `${tweet.id}` === id);
 };
 
-export const createTweet = async ({ name, username, text }) => {
+export const createTweet = async (text, userId) => {
     const newTweet = {
         id: (tweets[0]?.id || 0) + 1,
         createdAt: Date.now().toLocaleString(),
