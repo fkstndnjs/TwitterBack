@@ -33,6 +33,6 @@ authController.post("/signup", signUpValidation, authService.signup);
 authController.post("/login", loginValidation, authService.login);
 
 // me
-authController.get("/me", auth);
+authController.get("/me", auth, authService.me);
 
 export default authController;

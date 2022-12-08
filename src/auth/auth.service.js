@@ -63,3 +63,12 @@ export const login = async (req, res) => {
 
     res.status(200).json({ token, username });
 };
+
+// me
+export const me = async (req, res) => {
+    const user = await userRepository.findById(req.userId);
+
+    if (user) {
+        return res.status(200).json({ token: req.token });
+    }
+};
