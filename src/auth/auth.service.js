@@ -59,7 +59,7 @@ export const login = async (req, res) => {
     }
 
     // 토큰 생성
-    const token = createToken(id);
+    const token = createToken(user.id);
 
     res.status(200).json({ token, username });
 };
