@@ -59,7 +59,7 @@ export const deleteTweet = async (req, res) => {
     const { id } = req.params;
     const tweet = await tweetRepository.getTweetById(id);
 
-    // 다른 유저의 수정 방지
+    // 다른 유저의 삭제 방지
     if (tweet.userId !== req.userId) {
         return res
             .status(403)
