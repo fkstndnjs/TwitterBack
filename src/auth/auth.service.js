@@ -26,6 +26,7 @@ export const signup = async (req, res, next) => {
         email,
     });
 
+    const token = createToken(userId);
     res.status(201).json({ token, username });
 };
 
@@ -47,5 +48,6 @@ export const login = async (req, res, next) => {
             .json({ message: "아이디 혹은 비밀번호가 틀렸습니다." });
     }
 
-    const token = create;
+    const token = createToken(id);
+    res.status(200).json({ token, username });
 };
