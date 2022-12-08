@@ -40,7 +40,9 @@ export const updateTweet = async (req, res) => {
 
     // 다른 유저의 수정 방지
     if (tweet.userId !== req.userId) {
-        res.status(403).json({ message: "본인의 트윗만 수정할 수 있습니다." });
+        return res
+            .status(403)
+            .json({ message: "본인의 트윗만 수정할 수 있습니다." });
     }
 
     if (tweet) {
@@ -55,16 +57,16 @@ export const updateTweet = async (req, res) => {
 // 트윗 삭제
 export const deleteTweet = async (req, res) => {
     const { id } = req.params;
-    const deleteResult = await tweetRepository.deleteTweet(id);
+    const tweet = await tweetRepository.getTweetById(id);
 
     // 다른 유저의 수정 방지
     if (tweet.userId !== req.userId) {
-        res.status(403).json({ message: "본인의 트윗만 수정할 수 있습니다." });
+        return res
+            .status(403)
+            .json({ message: "본인의 트윗만 수정할 수 있습니다." });
     }
 
-    if (deleteResult) {
-        res.sendStatus(204);
-    } else {
-        res.status(404).json({ status: 404, message: `id ${id} NOT FOUND` });
-    }
+    await tweetRepository.deleteTweet(id);
+
+    res.sendStatus(204);
 };

@@ -58,9 +58,5 @@ export const updateTweet = async (id, text) => {
 };
 
 export const deleteTweet = async (id) => {
-    const prevLength = tweets.length;
-
     tweets = tweets.filter((tweet) => `${tweet.id}` !== id);
-
-    return prevLength !== tweets.length;
 };
