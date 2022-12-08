@@ -63,7 +63,7 @@ export const deleteTweet = async (req, res) => {
     if (tweet.userId !== req.userId) {
         return res
             .status(403)
-            .json({ message: "본인의 트윗만 수정할 수 있습니다." });
+            .json({ message: "본인의 트윗만 삭제할 수 있습니다." });
     }
 
     await tweetRepository.deleteTweet(id);
