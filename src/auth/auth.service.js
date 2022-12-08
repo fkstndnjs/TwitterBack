@@ -40,6 +40,7 @@ export const login = async (req, res) => {
 
     // username으로 존재하는지 체크
     const user = await userRepository.findByUsername(username);
+
     if (!user) {
         return res
             .status(401)
@@ -48,6 +49,7 @@ export const login = async (req, res) => {
 
     // bcrypt.compare()로 비밀번호 비교
     const isValidPassword = await bcrypt.compare(password, user.password);
+
     if (!isValidPassword) {
         return res
             .status(401)
