@@ -18,7 +18,9 @@ export const signup = async (req, res, next) => {
         return res.status(409).json({ message: `이미 가입된 유저입니다.` });
     }
 
+    // 비밀번호 암호화
     const hashed = bcrypt.hash(password, bcryptSaltRounds);
+
     const userId = await userRepository.createUser({
         username,
         password: hashed,
@@ -26,7 +28,9 @@ export const signup = async (req, res, next) => {
         email,
     });
 
+    // 토큰 생성
     const token = createToken(userId);
+
     res.status(201).json({ token, username });
 };
 
