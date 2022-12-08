@@ -32,22 +32,25 @@ export const signup = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
     const { username, password } = req.body;
-    const user = await userRepository.findByUsername(username);
 
+    // username으로 존재하는지 체크
+    const user = await userRepository.findByUsername(username);
     if (!user) {
         return res
             .status(401)
             .json({ message: "아이디 혹은 비밀번호가 틀렸습니다." });
     }
 
+    // bcrypt.compare()로 비밀번호 비교
     const isValidPassword = await bcrypt.compare(password, user.password);
-
     if (!isValidPassword) {
         return res
             .status(401)
             .json({ message: "아이디 혹은 비밀번호가 틀렸습니다." });
     }
 
+    // 토큰 생성
     const token = createToken(id);
+
     res.status(200).json({ token, username });
 };
