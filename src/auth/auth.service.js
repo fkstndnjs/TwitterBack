@@ -20,7 +20,7 @@ export const signup = async (req, res) => {
     }
 
     // 비밀번호 암호화
-    const hashed = bcrypt.hash(password, bcryptSaltRounds);
+    const hashed = await bcrypt.hash(password, bcryptSaltRounds);
 
     // 유저 데이터 생성
     const createdUser = await userRepository.createUser({
