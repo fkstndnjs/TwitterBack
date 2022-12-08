@@ -73,4 +73,6 @@ export const me = async (req, res) => {
             .status(200)
             .json({ token: req.token, username: user.username });
     }
+
+    res.status(404).json({ message: "유저가 존재하지 않습니다." });
 };
