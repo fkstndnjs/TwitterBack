@@ -5,7 +5,7 @@ export const findByUsername = async (username) => {
 };
 
 export const createUser = async (user) => {
-    const createdUser = { id: users[length - 1]?.id + 1 || 1, ...user };
+    const createdUser = { id: users[users.length - 1]?.id + 1 || 1, ...user };
 
     users.push(createdUser);
 
