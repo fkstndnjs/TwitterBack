@@ -3,6 +3,8 @@ import * as authService from "./auth.service.js";
 
 const authController = express.Router();
 
+// validation
+
 // 회원가입
 authController.post("/signup", authService.signup);
 
