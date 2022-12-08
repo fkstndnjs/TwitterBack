@@ -5,10 +5,9 @@ export const findByUsername = async (username) => {
 };
 
 export const createUser = async (user) => {
-    // 유저 생성
     const createdUser = { id: users[length - 1]?.id + 1 || 1, ...user };
 
     users.push(createdUser);
 
-    return createdUser.id;
+    return createdUser;
 };
