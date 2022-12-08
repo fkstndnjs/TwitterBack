@@ -44,7 +44,7 @@ export const createTweet = async (text, userId) => {
 
     tweets = [newTweet, ...tweets];
 
-    return tweets;
+    return newTweet;
 };
 
 export const updateTweet = async (id, text) => {

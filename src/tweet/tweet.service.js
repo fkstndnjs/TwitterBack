@@ -24,9 +24,12 @@ export const getTweet = async (req, res) => {
 
 // 트윗 생성
 export const createTweet = async (req, res) => {
-    await tweetRepository.createTweet(req.body);
+    const createdTweet = await tweetRepository.createTweet(
+        req.body.text,
+        req.userId
+    );
 
-    res.sendStatus(201);
+    res.status(201).json(createdTweet);
 };
 
 // 트윗 수정
