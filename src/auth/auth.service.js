@@ -9,6 +9,7 @@ const createToken = (id) => {
     return jwt.sign({ id }, jwtSecretKey, { expiresIn: jwtExpiresInDays });
 };
 
+// 회원가입
 export const signup = async (req, res) => {
     const { username, password, name, email } = req.body;
     const user = await userRepository.findByUsername(username);
@@ -35,6 +36,7 @@ export const signup = async (req, res) => {
     res.status(201).json({ token, username });
 };
 
+// 로그인
 export const login = async (req, res) => {
     const { username, password } = req.body;
 
