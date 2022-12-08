@@ -6,6 +6,20 @@ export const auth = async (req, res, next) => {
 
     if (authHeader && authHeader.startsWith("Bearer ")) {
         const token = authHeader.split(" ")[1];
-        jwt.verify(token, "secret");
+        jwt.verify(token, "secret", (err, data) => {
+            if (err) {
+                return res.status(401).json({ message: "인증 에러" });
+            }
+
+            const user = userRepository.findById(data.id);
+
+            if (user) {
+                req.userId = user.id;
+
+                return next();
+            }
+
+            return res.status(401).json({ message: "인증 에러" });
+        });
     }
 };
