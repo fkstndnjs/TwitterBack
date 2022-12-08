@@ -3,6 +3,7 @@ let tweets = [
         createdAt: new Date().toLocaleString(),
         id: 1,
         text: "Hello",
+        userId: 1,
     },
 ];
 

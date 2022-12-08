@@ -1,4 +1,13 @@
-let users = [];
+let users = [
+    {
+        createdAt: new Date().toLocaleString(),
+        id: 1,
+        username: "ysh",
+        password: "yshysh",
+        name: "SeokHyun Yu",
+        email: "fkstndnjs@naver.com",
+    },
+];
 
 export const findByUsername = async (username) => {
     return users.find((user) => user.username === username);
