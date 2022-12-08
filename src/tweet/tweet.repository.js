@@ -28,16 +28,18 @@ export const getAllTweetsByUsername = async (username) => {
 };
 
 export const getTweetById = async (id) => {
-    return tweets.find((tweet) => `${tweet.id}` === id);
+    const tweet = tweets.find((tweet) => `${tweet.id}` === id);
+    const { username, name } = userRepository.findById(tweet.userId);
+
+    return { ...tweet, username, name };
 };
 
 export const createTweet = async (text, userId) => {
     const newTweet = {
         id: (tweets[0]?.id || 0) + 1,
         createdAt: Date.now().toLocaleString(),
-        name,
-        username,
         text,
+        userId,
     };
 
     tweets = [newTweet, ...tweets];
