@@ -6,7 +6,6 @@ import { auth } from "../middleware/auth.js";
 
 const tweetController = express.Router();
 
-// text가 5글자 이상인지 검사하는 validator
 const textValidator = [
     body("text")
         .trim()
@@ -22,11 +21,9 @@ tweetController.get("/", auth, tweetService.getTweets);
 tweetController.get("/:id", auth, tweetService.getTweet);
 
 // 트윗 생성
-// textValidator 미들웨어 추가
 tweetController.post("/", auth, textValidator, tweetService.createTweet);
 
 // 트윗 수정
-// textValidator 미들웨어 추가
 tweetController.put("/:id", auth, textValidator, tweetService.updateTweet);
 
 // 트윗 삭제
