@@ -24,4 +24,6 @@ export const auth = async (req, res, next) => {
             return res.status(401).json({ message: "인증 에러" });
         });
     }
+
+    return res.status(401).json({ message: "인증 에러" });
 };
