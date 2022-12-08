@@ -12,9 +12,10 @@ const createToken = (id) => {
 // 회원가입
 export const signup = async (req, res) => {
     const { username, password, name, email } = req.body;
-    const user = await userRepository.findByUsername(username);
 
     // 이미 가입된 유저일 경우
+    const user = await userRepository.findByUsername(username);
+
     if (user) {
         return res.status(409).json({ message: `이미 가입된 유저입니다.` });
     }
@@ -40,7 +41,7 @@ export const signup = async (req, res) => {
 export const login = async (req, res) => {
     const { username, password } = req.body;
 
-    // username으로 존재하는지 체크
+    // username을 가진 유저가 있는지 확인
     const user = await userRepository.findByUsername(username);
 
     if (!user) {
@@ -49,7 +50,7 @@ export const login = async (req, res) => {
             .json({ message: "아이디 혹은 비밀번호가 틀렸습니다." });
     }
 
-    // bcrypt.compare()로 비밀번호 비교
+    // bcrypt.compare()로 암호화 된 비밀번호와 비교
     const isValidPassword = await bcrypt.compare(password, user.password);
 
     if (!isValidPassword) {
