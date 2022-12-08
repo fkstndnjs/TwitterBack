@@ -1,9 +1,11 @@
+import bcrypt from "bcrypt";
+
 let users = [
     {
         createdAt: new Date().toLocaleString(),
         id: 1,
         username: "ysh",
-        password: "yshysh",
+        password: bcrypt.hashSync("yshysh", 12),
         name: "SeokHyun Yu",
         email: "fkstndnjs@naver.com",
     },
