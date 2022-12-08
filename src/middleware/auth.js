@@ -14,6 +14,7 @@ export const auth = async (req, res, next) => {
             const user = userRepository.findById(data.id);
 
             if (user) {
+                req.token = token;
                 req.userId = user.id;
 
                 return next();

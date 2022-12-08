@@ -69,6 +69,8 @@ export const me = async (req, res) => {
     const user = await userRepository.findById(req.userId);
 
     if (user) {
-        return res.status(200).json({ token: req.token });
+        return res
+            .status(200)
+            .json({ token: req.token, username: user.username });
     }
 };
