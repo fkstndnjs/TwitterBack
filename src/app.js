@@ -4,9 +4,15 @@ import morgan from "morgan";
 import cors from "cors";
 import tweetController from "./tweet/tweet.controller.js";
 import authController from "./auth/auth.controller.js";
+import dotenv from "dotenv";
+
+// process.env 세팅
+dotenv.config();
 
 // 서버 생성
 const app = express();
+
+console.log(process.env);
 
 // 미들웨어
 app.use(express.json());
