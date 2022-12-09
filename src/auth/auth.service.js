@@ -4,6 +4,9 @@ import jwt from "jsonwebtoken";
 import { config } from "../../config.js";
 
 const createToken = (id) => {
+    console.log("🚀 ---------------------------------------------🚀");
+    console.log("🚀 ~ config.jwtSecretKey", config.jwtSecretKey);
+    console.log("🚀 ---------------------------------------------🚀");
     return jwt.sign({ id }, config.jwtSecretKey, {
         expiresIn: config.jwtExpires,
     });
