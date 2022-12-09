@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { config } from "../../config.js";
 import * as userRepository from "../user/user.repository.js";
 
 export const auth = async (req, res, next) => {
@@ -11,7 +12,7 @@ export const auth = async (req, res, next) => {
         const token = authHeader.split(" ")[1];
 
         // 토큰값 검증
-        jwt.verify(token, "secret", async (err, data) => {
+        jwt.verify(token, config.jwtSecretKey, async (err, data) => {
             // 토큰이 유효하지 않다면
             if (err) {
                 return res.status(401).json({ message: "인증 에러" });
