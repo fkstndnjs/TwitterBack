@@ -1,33 +1,33 @@
 {
-  "name": "twitterback",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "type": "module",
-  "scripts": {
-    "start": "nodemon ./src/app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fkstndnjs/TwitterBack.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fkstndnjs/TwitterBack/issues"
-  },
-  "homepage": "https://github.com/fkstndnjs/TwitterBack#readme",
-  "dependencies": {
-    "bcrypt": "^5.1.0",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "express-validator": "^6.14.2",
-    "helmet": "^6.0.1",
-    "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.10.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.20"
-  }
+    "name": "twitterback",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "start": "clear && nodemon ./src/app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fkstndnjs/TwitterBack.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/fkstndnjs/TwitterBack/issues"
+    },
+    "homepage": "https://github.com/fkstndnjs/TwitterBack#readme",
+    "dependencies": {
+        "bcrypt": "^5.1.0",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "express-validator": "^6.14.2",
+        "helmet": "^6.0.1",
+        "jsonwebtoken": "^8.5.1",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    }
 }
