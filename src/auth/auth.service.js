@@ -1,12 +1,12 @@
 import * as userRepository from "../user/user.repository.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { config } from "../../config.js";
 
-const jwtSecretKey = "secret";
-const jwtExpiresInDays = "2d";
-const bcryptSaltRounds = 12;
 const createToken = (id) => {
-    return jwt.sign({ id }, jwtSecretKey, { expiresIn: jwtExpiresInDays });
+    return jwt.sign({ id }, config.jwtSecretKey, {
+        expiresIn: config.jwtExpires,
+    });
 };
 
 // 회원가입
@@ -21,7 +21,7 @@ export const signup = async (req, res) => {
     }
 
     // 비밀번호 암호화
-    const hashed = await bcrypt.hash(password, bcryptSaltRounds);
+    const hashed = await bcrypt.hash(password, config.bcryptSaltRounds);
 
     // 유저 데이터 생성
     const createdUser = await userRepository.createUser({
