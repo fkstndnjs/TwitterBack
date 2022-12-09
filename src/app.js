@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import tweetController from "./tweet/tweet.controller.js";
 import authController from "./auth/auth.controller.js";
+import { config } from "../config.js";
 
 // 서버 생성
 const app = express();
@@ -29,4 +30,4 @@ app.use((err, req, res, next) => {
 });
 
 // 8000 포트로 listen
-app.listen(8000);
+app.listen(config.port);
