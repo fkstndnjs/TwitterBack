@@ -5,6 +5,7 @@ import cors from "cors";
 import tweetController from "./tweet/tweet.controller.js";
 import authController from "./auth/auth.controller.js";
 import { config } from "../config.js";
+import db from "../database.js";
 
 // 서버 생성
 const app = express();
@@ -21,13 +22,17 @@ app.use("/auth", authController);
 
 // 404 에러 핸들러
 app.use((req, res, next) => {
-    res.sendStatus(404);
+  res.sendStatus(404);
 });
 
 // 500 에러 핸들러
 app.use((err, req, res, next) => {
-    res.sendStatus(500);
+  res.sendStatus(500);
 });
 
 // 8000 포트로 listen
-app.listen(config.port);
+app.listen(config.port, () => {
+  db.getConnection().then((connection) => {
+    console.log(connection);
+  });
+});
