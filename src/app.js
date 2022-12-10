@@ -33,4 +33,6 @@ app.use((err, req, res, next) => {
 db.getConnection();
 
 // 8000 포트로 listen
-app.listen(config.port);
+app.listen(config.port, () => {
+  console.log("Server On...");
+});
