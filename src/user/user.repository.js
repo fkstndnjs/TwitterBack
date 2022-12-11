@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import db from "../../database.js";
 
-    id: 1,
     username: "ysh",
     password: bcrypt.hashSync("yshysh", 12),
     name: "SeokHyun Yu",
