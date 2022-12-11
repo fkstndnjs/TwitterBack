@@ -32,7 +32,7 @@ export const findByUsername = async (username) => {
     where: {
       username,
     },
-  });
+  }).then((data) => data.dataValues);
 };
 
 export const findById = async (id) => {
