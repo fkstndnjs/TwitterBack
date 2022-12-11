@@ -40,7 +40,7 @@ export const getTweetById = async (id) => {
 };
 
 export const createTweet = async (text, userId) => {
-  return Tweet.create({ text, userId });
+  return Tweet.create({ text, userId }).then((data) => data.dataValues);
 };
 
 export const updateTweet = async (id, text) => {
