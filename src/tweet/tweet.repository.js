@@ -51,7 +51,7 @@ export const getTweetById = async (id) => {
     where: {
       id,
     },
-  });
+  }).then((data) => data.dataValues);
 };
 
 export const createTweet = async (text, userId) => {
