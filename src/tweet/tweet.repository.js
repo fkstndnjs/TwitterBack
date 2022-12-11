@@ -23,7 +23,7 @@ export const getAllTweets = async () => {
       model: userRepository.User,
       attributes: ["id", "username"],
     },
-    order: [["createdAt", "ASC"]],
+    order: [["createdAt", "DESC"]],
   });
 };
 
