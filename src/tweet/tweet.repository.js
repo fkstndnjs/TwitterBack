@@ -17,13 +17,13 @@ export const Tweet = sequelize.define("tweet", {
 Tweet.belongsTo(userRepository.User);
 
 export const getAllTweets = async () => {
-  return Promise.all(
-    tweets.map(async (tweet) => {
-      const { username, name } = await userRepository.findById(tweet.userId);
-
-      return { ...tweet, username, name };
-    })
-  );
+  return Tweet.findAll({
+    attributes: ["id", "text", "createdAt"],
+    include: {
+      model: userRepository.User,
+      attributes: ["id", "username"],
+    },
+  });
 };
 
 export const getAllTweetsByUsername = async (username) => {
