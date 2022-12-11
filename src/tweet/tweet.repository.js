@@ -72,5 +72,9 @@ export const updateTweet = async (id, text) => {
 };
 
 export const deleteTweet = async (id) => {
-  tweets = tweets.filter((tweet) => `${tweet.id}` !== id);
+  Tweet.destroy({
+    where: {
+      id,
+    },
+  });
 };
