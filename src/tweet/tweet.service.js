@@ -54,9 +54,12 @@ export const updateTweet = async (req, res) => {
 export const deleteTweet = async (req, res) => {
   const { id } = req.params;
   const tweet = await tweetRepository.getTweetById(id);
+  console.log("🚀 ----------------🚀");
+  console.log("🚀 ~ tweet", tweet);
+  console.log("🚀 ----------------🚀");
 
   // 다른 유저의 삭제 방지
-  if (tweet.userId !== req.userId) {
+  if (tweet.user.id !== req.userId) {
     return res
       .status(403)
       .json({ message: "본인의 트윗만 삭제할 수 있습니다." });
