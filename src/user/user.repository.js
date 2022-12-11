@@ -23,12 +23,11 @@ export const findById = async (id) => {
 export const createUser = async (user) => {
   const { username, password, name, email } = user;
 
-  return db
-    .execute(
-      `INSERT INTO user(username, password, name, email) VALUES(?, ?, ?, ?)`,
-      [username, password, name, email]
-    )
-    .then((data) => {
-      data[0].insertId;
-    });
+  db.execute(
+    `INSERT INTO user(username, password, name, email) VALUES(?, ?, ?, ?)`,
+    [username, password, name, email]
+  ).then((data) => {
+    console.log(data);
+    data[0].insertId;
+  });
 };
