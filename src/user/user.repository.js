@@ -26,7 +26,6 @@ export const User = sequelize.define("user", {
     allowNull: false,
   },
 });
-User.hasMany(Tweet);
 
 export const findByUsername = async (username) => {
   return User.findOne({
