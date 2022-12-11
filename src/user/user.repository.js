@@ -13,11 +13,15 @@ let users = [
 ];
 
 export const findByUsername = async (username) => {
-  return users.find((user) => user.username === username);
+  return db
+    .execute("SELECT * FROM user WHERE username=?", [username])
+    .then((data) => data[0][0]);
 };
 
 export const findById = async (id) => {
-  return users.find((user) => user.id === id);
+  return db
+    .execute("SELECT * FROM user WHERE id=?", [id])
+    .then((data) => data[0][0]);
 };
 
 export const createUser = async (user) => {
