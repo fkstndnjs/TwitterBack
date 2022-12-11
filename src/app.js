@@ -30,8 +30,6 @@ app.use((err, req, res, next) => {
   res.sendStatus(500);
 });
 
-db.getConnection();
-
 // 8000 포트로 listen
 app.listen(config.port, () => {
   console.log("Server On...");
