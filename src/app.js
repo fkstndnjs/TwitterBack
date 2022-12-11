@@ -6,6 +6,7 @@ import tweetController from "./tweet/tweet.controller.js";
 import authController from "./auth/auth.controller.js";
 import { config } from "../config.js";
 import db from "../database.js";
+import sequelize from "../database.js";
 
 // 서버 생성
 const app = express();
@@ -30,7 +31,11 @@ app.use((err, req, res, next) => {
   res.sendStatus(500);
 });
 
-// 8000 포트로 listen
-app.listen(config.port, () => {
-  console.log("Server On...");
+// DB 연결
+sequelize.sync().then(() => {
+  // 8000 포트로 listen
+  // DB가 연결된 다음에 서버 실행
+  app.listen(config.port, () => {
+    console.log("Server On...");
+  });
 });
