@@ -1,4 +1,3 @@
-import mysql from "mysql2";
 import sequel from "sequelize";
 
 const sequelize = new sequel.Sequelize("twitter", "root", "0000", {
