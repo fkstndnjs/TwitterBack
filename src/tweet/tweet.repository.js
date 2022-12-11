@@ -28,16 +28,31 @@ export const getAllTweets = async () => {
 };
 
 export const getAllTweetsByUsername = async (username) => {
-  return getAllTweets().then((tweets) =>
-    tweets.filter((tweet) => tweet.username === username)
-  );
+  return Tweet.findAll({
+    attributes: ["id", "text", "createdAt"],
+    include: {
+      model: userRepository.User,
+      attributes: ["id", "username"],
+      where: {
+        username,
+      },
+    },
+    order: [["createdAt", "DESC"]],
+  });
 };
 
 export const getTweetById = async (id) => {
-  const tweet = tweets.find((tweet) => `${tweet.id}` === id);
-  const { username, name } = userRepository.findById(tweet.userId);
-
-  return { ...tweet, username, name };
+  return Tweet.findAll({
+    attributes: ["id", "text", "createdAt"],
+    include: {
+      model: userRepository.User,
+      attributes: ["id", "username"],
+      where: {
+        id,
+      },
+    },
+    order: [["createdAt", "DESC"]],
+  });
 };
 
 export const createTweet = async (text, userId) => {
