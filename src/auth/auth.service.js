@@ -24,7 +24,7 @@ export const signup = async (req, res) => {
   const hashed = await bcrypt.hash(password, config.bcryptSaltRounds);
 
   // 유저 데이터 생성
-  const createdUser = await userRepository.createUser({
+  const createdUserId = await userRepository.createUser({
     username,
     password: hashed,
     name,
@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
   });
 
   // 토큰 생성
-  const token = createToken(1);
+  const token = createToken(createdUserId);
 
   res.status(201).json({ token, username });
 };
