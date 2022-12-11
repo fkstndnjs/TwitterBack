@@ -27,9 +27,11 @@ const User = sequelize.define("user", {
 });
 
 export const findByUsername = async (username) => {
-  return db
-    .execute("SELECT * FROM user WHERE username=?", [username])
-    .then((data) => data[0][0]);
+  return User.findOne({
+    where: {
+      username,
+    },
+  });
 };
 
 export const findById = async (id) => {
