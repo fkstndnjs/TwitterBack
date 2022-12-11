@@ -39,14 +39,5 @@ export const findById = async (id) => {
 };
 
 export const createUser = async (user) => {
-  const { username, password, name, email } = user;
-
-  return db
-    .execute(
-      `INSERT INTO user(username, password, name, email) VALUES(?, ?, ?, ?)`,
-      [username, password, name, email]
-    )
-    .then((data) => {
-      return data[0].insertId;
-    });
+  return User.create(user);
 };
