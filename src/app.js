@@ -6,6 +6,7 @@ import tweetController from "./tweet/tweet.controller.js";
 import authController from "./auth/auth.controller.js";
 import { config } from "../config.js";
 import sequelize from "../database.js";
+import mysql from "mysql2";
 
 // 서버 생성
 const app = express();
