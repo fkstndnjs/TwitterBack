@@ -2,7 +2,7 @@ import sequelize from "../../database.js";
 import * as userRepository from "../user/user.repository.js";
 import { DataTypes } from "sequelize";
 
-const Tweet = sequelize.define("tweet", {
+export const Tweet = sequelize.define("tweet", {
   id: {
     type: DataTypes.BIGINT,
     autoIncrement: true,

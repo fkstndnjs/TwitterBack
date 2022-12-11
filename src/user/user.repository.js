@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../../database.js";
+import { Tweet } from "../tweet/tweet.repository.js";
 
 export const User = sequelize.define("user", {
   id: {
@@ -25,6 +26,7 @@ export const User = sequelize.define("user", {
     allowNull: false,
   },
 });
+User.hasMany(Tweet);
 
 export const findByUsername = async (username) => {
   return User.findOne({
