@@ -39,5 +39,5 @@ export const findById = async (id) => {
 };
 
 export const createUser = async (user) => {
-  return User.create(user);
+  return User.create(user).then((data) => data.dataValues.id);
 };
