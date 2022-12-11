@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
   });
 
   // 토큰 생성
-  const token = createToken(createdUser.id);
+  const token = createToken(1);
 
   res.status(201).json({ token, username });
 };
