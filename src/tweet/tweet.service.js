@@ -54,6 +54,7 @@ export const updateTweet = async (req, res) => {
 export const deleteTweet = async (req, res) => {
   const { id } = req.params;
   const tweet = await tweetRepository.getTweetById(id);
+  console.log("🚀 ----------------🚀");
   console.log("🚀 ~ tweet", tweet);
   console.log("🚀 ----------------🚀");
 
