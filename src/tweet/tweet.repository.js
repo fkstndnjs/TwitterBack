@@ -65,9 +65,11 @@ export const updateTweet = async (id, text) => {
       text,
     },
     {
-      where,
+      where: {
+        id,
+      },
     }
-  );
+  ).then((data) => console.log(data));
 };
 
 export const deleteTweet = async (id) => {

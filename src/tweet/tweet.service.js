@@ -36,7 +36,7 @@ export const createTweet = async (req, res) => {
 export const updateTweet = async (req, res) => {
   const { id } = req.params;
   const { text } = req.body;
-  const tweet = await tweetRepository.updateTweet(id, text);
+  const tweet = await tweetRepository.getTweetById(id);
 
   // 다른 유저의 수정 방지
   if (tweet.userId !== req.userId) {
@@ -45,13 +45,9 @@ export const updateTweet = async (req, res) => {
       .json({ message: "본인의 트윗만 수정할 수 있습니다." });
   }
 
-  if (tweet) {
-    tweet.text = text;
+  await tweetRepository.updateTweet(id, text);
 
-    res.status(200).json(tweet);
-  } else {
-    res.status(404).json({ status: 404, message: `id ${id} NOT FOUND` });
-  }
+  res.status(200);
 };
 
 // 트윗 삭제
