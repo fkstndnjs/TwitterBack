@@ -9,7 +9,12 @@ const Tweet = sequelize.define("tweet", {
     allowNull: false,
     primaryKey: true,
   },
+  text: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
 });
+Tweet.belongsTo(userRepository.User);
 
 export const getAllTweets = async () => {
   return Promise.all(
