@@ -5,7 +5,6 @@ const sequelize = new sequel.Sequelize("twitter", "root", "0000", {
   host: "127.0.0.1",
 });
 
-//   host: "127.0.0.1",
 //   user: "root",
 //   database: "twitter",
 //   password: "0000",
