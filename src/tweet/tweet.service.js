@@ -37,9 +37,6 @@ export const updateTweet = async (req, res) => {
   const { id } = req.params;
   const { text } = req.body;
   const tweet = await tweetRepository.getTweetById(id);
-  console.log("🚀 ----------------🚀");
-  console.log("🚀 ~ tweet", tweet);
-  console.log("🚀 ----------------🚀");
 
   // 다른 유저의 수정 방지
   if (tweet.user.id !== req.userId) {
@@ -50,7 +47,7 @@ export const updateTweet = async (req, res) => {
 
   await tweetRepository.updateTweet(id, text);
 
-  res.status(200);
+  res.sendStatus(200);
 };
 
 // 트윗 삭제
