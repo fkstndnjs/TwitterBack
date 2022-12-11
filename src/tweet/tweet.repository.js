@@ -1,13 +1,15 @@
+import sequelize from "../../database.js";
 import * as userRepository from "../user/user.repository.js";
+import { DataTypes } from "sequelize";
 
-let tweets = [
-  {
-    createdAt: new Date().toLocaleString(),
-    id: 1,
-    text: "Hello",
-    userId: 1,
+const Tweet = sequelize.define("tweet", {
+  id: {
+    type: DataTypes.BIGINT,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true,
   },
-];
+});
 
 export const getAllTweets = async () => {
   return Promise.all(
