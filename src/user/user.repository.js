@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import db from "../../database.js";
 
-  },
 ];
 
 export const findByUsername = async (username) => {
