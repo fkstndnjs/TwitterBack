@@ -35,9 +35,7 @@ export const findByUsername = async (username) => {
 };
 
 export const findById = async (id) => {
-  return db
-    .execute("SELECT * FROM user WHERE id=?", [id])
-    .then((data) => data[0][0]);
+  return User.findByPk(id);
 };
 
 export const createUser = async (user) => {
