@@ -37,6 +37,9 @@ export const updateTweet = async (req, res) => {
   const { id } = req.params;
   const { text } = req.body;
   const tweet = await tweetRepository.getTweetById(id);
+  console.log("🚀 ----------------🚀");
+  console.log("🚀 ~ tweet", tweet);
+  console.log("🚀 ----------------🚀");
 
   // 다른 유저의 수정 방지
   if (tweet.userId !== req.userId) {
