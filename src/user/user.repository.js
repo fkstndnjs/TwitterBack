@@ -1,4 +1,18 @@
-import db from "../../database.js";
+import { DataTypes } from "sequelize";
+import sequelize from "../../database";
+
+const User = sequelize.define("user", {
+  id: {
+    type: DataTypes.BIGINT,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true,
+  },
+  username: {
+    type: DataTypes.STRING(100),
+    allowNull: false,
+  },
+});
 
 export const findByUsername = async (username) => {
   return db
