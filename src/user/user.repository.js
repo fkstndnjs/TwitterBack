@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import db from "../../database.js";
 
-    email: "fkstndnjs@naver.com",
   },
 ];
 
