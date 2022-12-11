@@ -47,9 +47,9 @@ export const getTweetById = async (id) => {
     include: {
       model: userRepository.User,
       attributes: ["id", "username"],
-      where: {
-        id,
-      },
+    },
+    where: {
+      id,
     },
     order: [["createdAt", "DESC"]],
   });
