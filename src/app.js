@@ -5,7 +5,6 @@ import cors from "cors";
 import tweetController from "./tweet/tweet.controller.js";
 import authController from "./auth/auth.controller.js";
 import { config } from "../config.js";
-import db from "../database.js";
 import sequelize from "../database.js";
 
 // 서버 생성
@@ -23,19 +22,19 @@ app.use("/auth", authController);
 
 // 404 에러 핸들러
 app.use((req, res, next) => {
-  res.sendStatus(404);
+    res.sendStatus(404);
 });
 
 // 500 에러 핸들러
 app.use((err, req, res, next) => {
-  res.sendStatus(500);
+    res.sendStatus(500);
 });
 
 // DB 연결
 sequelize.sync().then(() => {
-  // 8000 포트로 listen
-  // DB가 연결된 다음에 서버 실행
-  app.listen(config.port, () => {
-    console.log("Server On...");
-  });
+    // 8000 포트로 listen
+    // DB가 연결된 다음에 서버 실행
+    app.listen(config.port, () => {
+        console.log("Server On...");
+    });
 });
