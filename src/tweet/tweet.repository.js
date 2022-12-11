@@ -60,13 +60,14 @@ export const createTweet = async (text, userId) => {
 };
 
 export const updateTweet = async (id, text) => {
-  const tweet = tweets.find((tweet) => `${tweet.id}` === id);
-
-  if (tweet) {
-    tweet.text = text;
-  }
-
-  return tweet;
+  return Tweet.update(
+    {
+      text,
+    },
+    {
+      where,
+    }
+  );
 };
 
 export const deleteTweet = async (id) => {
