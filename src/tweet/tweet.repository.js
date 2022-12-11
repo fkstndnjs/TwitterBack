@@ -40,16 +40,7 @@ export const getTweetById = async (id) => {
 };
 
 export const createTweet = async (text, userId) => {
-  const newTweet = {
-    id: (tweets[0]?.id || 0) + 1,
-    createdAt: Date.now().toLocaleString(),
-    text,
-    userId,
-  };
-
-  tweets = [newTweet, ...tweets];
-
-  return newTweet;
+  return Tweet.create({ text, userId });
 };
 
 export const updateTweet = async (id, text) => {
