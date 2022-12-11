@@ -42,7 +42,7 @@ export const getAllTweetsByUsername = async (username) => {
 };
 
 export const getTweetById = async (id) => {
-  return Tweet.findAll({
+  return Tweet.findOne({
     attributes: ["id", "text", "createdAt"],
     include: {
       model: userRepository.User,
@@ -51,7 +51,6 @@ export const getTweetById = async (id) => {
     where: {
       id,
     },
-    order: [["createdAt", "DESC"]],
   });
 };
 
