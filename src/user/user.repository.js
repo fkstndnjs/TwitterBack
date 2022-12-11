@@ -1,9 +1,6 @@
 import bcrypt from "bcrypt";
 import db from "../../database.js";
 
-let users = [
-  {
-    createdAt: new Date().toLocaleString(),
     id: 1,
     username: "ysh",
     password: bcrypt.hashSync("yshysh", 12),
