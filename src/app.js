@@ -6,13 +6,13 @@ import tweetController from "./tweet/tweet.controller.js";
 import authController from "./auth/auth.controller.js";
 import { config } from "../config.js";
 import sequelize from "../database.js";
-import csrfCheck from "./middleware/csrf.js";
+import csrf from "./middleware/csrf.js";
 
 // 서버 생성
 const app = express();
 
 // 미들웨어
-app.use(csrfCheck);
+app.use(csrf);
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(helmet());
