@@ -26,9 +26,9 @@ app.use(rateLimiter);
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
-    title: "Hello World",
+    title: "Twiiter",
     version: "1.0.0",
-    description: "A sample API",
+    description: "유석현의 Twitter",
   },
   servers: [
     {
