@@ -22,11 +22,11 @@ const textValidator = [
  *   get:
  *     tags:
  *      - Tweet
- *     summary: 트윗 전체 조회
- *     description: 트윗을 배열 형태로 return 한다
+ *     summary: tweet 전체 조회
+ *     description: tweet을 배열 형태로 return 한다
  *     responses:
  *       200:
- *         description: An array of users
+ *         description: An array of tweets
  */
 tweetController.get("/", auth, tweetService.getTweets);
 
