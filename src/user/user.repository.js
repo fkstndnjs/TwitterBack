@@ -32,7 +32,6 @@ export const findByUsername = async (username) => {
             username,
         },
     }).then((data) => {
-        console.log(data);
         return data?.dataValues;
     });
 };
