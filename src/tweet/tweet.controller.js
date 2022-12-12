@@ -7,14 +7,23 @@ import { auth } from "../middleware/auth.js";
 const tweetController = express.Router();
 
 const textValidator = [
-    body("text")
-        .trim()
-        .isLength({ min: 5 })
-        .withMessage("text를 최소 5 글자 이상 입력해주세요."),
-    validate,
+  body("text")
+    .trim()
+    .isLength({ min: 5 })
+    .withMessage("text를 최소 5 글자 이상 입력해주세요."),
+  validate,
 ];
 
 // 전체 조회
+/**
+ * @swagger
+ * /tweet:
+ *   get:
+ *     description: Returns a list of users
+ *     responses:
+ *       200:
+ *         description: An array of users
+ */
 tweetController.get("/", auth, tweetService.getTweets);
 
 // 상세 조회

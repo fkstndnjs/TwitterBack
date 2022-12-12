@@ -24,12 +24,17 @@ app.use(rateLimiter);
 
 // swagger definition
 const swaggerDefinition = {
+  openapi: "3.0.0",
   info: {
     title: "Hello World",
     version: "1.0.0",
     description: "A sample API",
   },
-  host: "localhost:8000",
+  servers: [
+    {
+      url: "http://localhost:8000",
+    },
+  ],
   basePath: "/",
 };
 
@@ -38,7 +43,7 @@ const options = {
   // import swaggerDefinitions
   swaggerDefinition,
   // path to the API docs
-  apis: ["./routes/*.js"],
+  apis: ["./tweet/*.js"],
 };
 
 // initialize swagger-jsdoc
@@ -50,7 +55,13 @@ app.get("/swagger.json", (req, res) => {
   res.send(swaggerSpec);
 });
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    explorer: true,
+  })
+);
 
 // 라우터
 app.use("/tweet", tweetController);
