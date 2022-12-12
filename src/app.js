@@ -68,7 +68,7 @@ app.use(
  * @swagger
  * tags:
  *  name: Tweet
- *  description: Tweet Router
+ *  description: 트윗 관련 API
  */
 app.use("/tweet", tweetController);
 app.use("/auth", authController);
