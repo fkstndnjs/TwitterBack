@@ -1,6 +1,6 @@
-import rateLimit from "express-rate-limit";
+import rateLimiter from "express-rate-limit";
 
-export default rateLimit({
+export default rateLimiter({
     windowMs: 10 * 1000,
     max: 10,
     message: "Too Many Request",
