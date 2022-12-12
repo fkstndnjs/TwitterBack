@@ -10,6 +10,7 @@ import csrf from "./middleware/csrf.js";
 import rateLimiter from "./middleware/rate-limiter.js";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
+import { Tweet } from "./tweet/tweet.repository.js";
 
 // 서버 생성
 const app = express();
@@ -63,6 +64,12 @@ app.use(
 );
 
 // 라우터
+/**
+ * @swagger
+ * tags:
+ *  name: Tweet
+ *  description: Tweet Router
+ */
 app.use("/tweet", tweetController);
 app.use("/auth", authController);
 
