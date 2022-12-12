@@ -35,7 +35,6 @@ const swaggerDefinition = {
       url: "http://localhost:8000",
     },
   ],
-  basePath: "/",
 };
 
 // options for the swagger docs
