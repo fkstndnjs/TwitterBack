@@ -17,6 +17,7 @@ const textValidator = [
 // 전체 조회
 /**
  * @swagger
+ * paths:
  * /tweet:
  *   get:
  *     description: Returns a list of users
