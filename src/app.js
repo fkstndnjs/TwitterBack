@@ -50,10 +50,10 @@ const swaggerSpec = swaggerJSDoc(options);
 
 // serve swagger
 app.get("/swagger.json", (req, res) => {
-  res.setHeader("Content-Type", "application/json");
-  res.send(swaggerSpec);
+  res.json(swaggerSpec);
 });
 
+// api 문서
 app.use(
   "/api-docs",
   swaggerUi.serve,
