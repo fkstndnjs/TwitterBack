@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-const csrfCheck = async (req, res, next) => {
+const csrf = async (req, res, next) => {
     if (req.method === "GET") {
         return next();
     }
@@ -20,4 +20,4 @@ const csrfCheck = async (req, res, next) => {
     next();
 };
 
-export default csrfCheck;
+export default csrf;
