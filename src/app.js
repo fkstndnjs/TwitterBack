@@ -10,7 +10,6 @@ import csrf from "./middleware/csrf.js";
 import rateLimiter from "./middleware/rate-limiter.js";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
-import { Tweet } from "./tweet/tweet.repository.js";
 
 // 서버 생성
 const app = express();
