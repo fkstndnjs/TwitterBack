@@ -20,25 +20,58 @@ app.use(helmet());
 app.use(cors());
 app.use(rateLimiter);
 
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+
+// swagger definition
+const swaggerDefinition = {
+  info: {
+    title: "Hello World",
+    version: "1.0.0",
+    description: "A sample API",
+  },
+  host: "localhost:8000",
+  basePath: "/",
+};
+
+// options for the swagger docs
+const options = {
+  // import swaggerDefinitions
+  swaggerDefinition,
+  // path to the API docs
+  apis: ["./routes/*.js"],
+};
+
+// initialize swagger-jsdoc
+const swaggerSpec = swaggerJSDoc(options);
+
+// serve swagger
+app.get("/swagger.json", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerSpec);
+});
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 // 라우터
 app.use("/tweet", tweetController);
 app.use("/auth", authController);
 
 // 404 에러 핸들러
 app.use((req, res, next) => {
-    res.sendStatus(404);
+  res.sendStatus(404);
 });
 
 // 500 에러 핸들러
 app.use((err, req, res, next) => {
-    res.sendStatus(500);
+  res.sendStatus(500);
 });
 
 // DB 연결
 sequelize.sync().then(() => {
-    // 8000 포트로 listen
-    // DB가 연결된 다음에 서버 실행
-    app.listen(config.port, () => {
-        console.log("Server On...");
-    });
+  // 8000 포트로 listen
+  // DB가 연결된 다음에 서버 실행
+  app.listen(config.port, () => {
+    console.log("Server On...");
+  });
 });
