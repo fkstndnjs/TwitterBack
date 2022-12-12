@@ -15,6 +15,15 @@ const textValidator = [
 ];
 
 // 전체 조회
+/**
+ * @swagger
+ * /tweet:
+ *   get:
+ *     description: Returns a list of users
+ *     responses:
+ *       200:
+ *         description: An array of users
+ */
 tweetController.get("/", auth, tweetService.getTweets);
 
 // 상세 조회

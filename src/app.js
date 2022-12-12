@@ -64,15 +64,6 @@ app.use(
 );
 
 // 라우터
-/**
- * @swagger
- * /tweet:
- *   get:
- *     description: Returns a list of users
- *     responses:
- *       200:
- *         description: An array of users
- */
 app.use("/tweet", tweetController);
 app.use("/auth", authController);
 
