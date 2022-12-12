@@ -13,7 +13,7 @@ import rateLimiter from "./middleware/rate-limiter.js";
 const app = express();
 
 // 미들웨어
-// app.use(csrf);
+app.use(csrf);
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(helmet());
