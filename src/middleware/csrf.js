@@ -8,13 +8,13 @@ const csrf = async (req, res, next) => {
     const csrfHeader = req.get("csrf-token");
 
     if (!csrfHeader) {
-        return res.status(403).json({ message: "CSRF ERROR" });
+        return res.status(403).json({ message: "CSRF ERROR - 1" });
     }
 
     const isTrue = await bcrypt.compare("csrf", csrfHeader);
 
     if (!isTrue) {
-        return res.status(403).json({ message: "CSRF ERROR" });
+        return res.status(403).json({ message: "CSRF ERROR - 2" });
     }
 
     next();
