@@ -7,6 +7,7 @@ import authController from "./auth/auth.controller.js";
 import { config } from "../config.js";
 import sequelize from "../database.js";
 import csrf from "./middleware/csrf.js";
+import rateLimiter from "./middleware/rate-limiter.js";
 
 // 서버 생성
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
+app.use(rateLimiter);
 
 // 라우터
 app.use("/tweet", tweetController);
