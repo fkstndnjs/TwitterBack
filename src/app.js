@@ -42,7 +42,7 @@ const options = {
   // import swaggerDefinitions
   swaggerDefinition,
   // path to the API docs
-  apis: ["./tweet/tweet.controller.js"],
+  apis: ["src/**/*.js"],
 };
 
 // initialize swagger-jsdoc
