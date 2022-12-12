@@ -80,11 +80,7 @@ export const me = async (req, res) => {
 
 // csrf
 export const csrfToken = async (req, res) => {
-    const csrfToken = await createCSRFToken();
+    const csrfToken = await bcrypt.hash("csrf", 1);
 
     res.status(200).json({ csrfToken });
-};
-
-const createCSRFToken = async () => {
-    return bcrypt.hash("csrf", 1);
 };
