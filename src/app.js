@@ -8,6 +8,8 @@ import { config } from "../config.js";
 import sequelize from "../database.js";
 import csrf from "./middleware/csrf.js";
 import rateLimiter from "./middleware/rate-limiter.js";
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 
 // 서버 생성
 const app = express();
@@ -19,9 +21,6 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
 app.use(rateLimiter);
-
-const swaggerJSDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
 
 // swagger definition
 const swaggerDefinition = {
